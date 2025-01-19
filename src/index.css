@@ -1,15 +1,12 @@
 :root {
   background-color: #29339B;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   place-items: center;
   width: 100vw;
   min-height: 100vh;
