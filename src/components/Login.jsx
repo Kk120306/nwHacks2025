@@ -1,5 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios'
+
+function handleSubmit(event) {
+    event.preventDefault();
+    axios.post('http://localhost:8081/login', {email, password})
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+}
 
 function Login(){
     return(
