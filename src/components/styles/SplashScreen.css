@@ -1,0 +1,25 @@
+.SplashScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 6rem;
+}
+
+.SplashScreen_Buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.SplashScreen_Button {
+  font-size: 4rem;
+  padding: 2rem;
+}
+
+.SplashScreen_Buttons_Login {
+  border-radius: 5rem;
+}
+
+.SplashScreen_Buttons_SignUp {
+  border-radius: 5rem;
+}
