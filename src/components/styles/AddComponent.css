@@ -79,7 +79,7 @@
     background-color: #004085;
 }
 
-/* Submit Button */
+
 .AddComponent_SubmitButton {
     background-color: #007bff;
     color: white;
@@ -100,7 +100,7 @@
     background-color: #004085;
 }
 
-/* Bottom Navigation */
+
 .AddComponent_SubmitButton + div {
     margin-top: 20px;
 }

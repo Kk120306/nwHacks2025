@@ -1,6 +1,6 @@
 .HomeScreen {
     width: 100vw;
-    height: 100vh; /* Use full height of the screen */
+    height: 100vh; 
     display: flex;
     flex-direction: column;
 }
@@ -12,15 +12,15 @@
 
 .HomeScreen_TopBar {
     background-color: white; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle box shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     padding: 10px 20px; 
-    position: fixed; /* Fix the top bar at the top */
+    position: fixed; 
     top: 0;
     left: 0;
     right: 0;
     z-index: 10; /* Ensure top bar stays above other elements */
     display: flex;
-    justify-content: space-between; /* Space out the logo and profile */
+    justify-content: space-between; 
     align-items: center;
 }
 
