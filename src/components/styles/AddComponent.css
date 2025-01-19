@@ -1,14 +1,106 @@
+/* General Styles */
 .AddComponent {
-    margin-top: 2.5rem;
-    width: 100vw;
-    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #f8f9fa;
+    height: 100vh;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    position: relative;
 }
 
-.AddComponent_Horizontal_Wrapper {
-    display: flex;
-    flex-direction: row;
+.AddComponent_FormWrapper {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+
+.AddComponent_Name,
+.AddComponent_Hint {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.AddComponent_Name::placeholder,
+.AddComponent_Hint::placeholder {
+    color: #aaa;
+}
+
+/* Voice Memo Section */
+.AddComponent_VoiceMemo {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.AddComponent_VoiceMemo:hover {
+    background-color: #218838;
+}
+
+.AddComponent_VoiceMemo:active {
+    background-color: #1e7e34;
+}
+
+.AddComponent_Picture {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.AddComponent_Picture:hover {
+    background-color: #0056b3;
+}
+
+.AddComponent_Picture:active {
+    background-color: #004085;
+}
+
+/* Submit Button */
+.AddComponent_SubmitButton {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.AddComponent_SubmitButton:hover {
+    background-color: #0056b3;
+}
+
+.AddComponent_SubmitButton:active {
+    background-color: #004085;
+}
+
+/* Bottom Navigation */
+.AddComponent_SubmitButton + div {
+    margin-top: 20px;
 }
