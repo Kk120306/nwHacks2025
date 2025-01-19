@@ -4,6 +4,7 @@ import MapComponent from './MapComponent';
 import ListComponent from './ListComponent';
 import MessagesComponent from './MessagesComponent';
 import AddComponent from './AddComponent';
+import ProfileComponent from './ProfileComponent';
 
 function HomeScreen({activeScreen}) {
   return (
@@ -11,13 +12,13 @@ function HomeScreen({activeScreen}) {
       {activeScreen == "Map" ? <MapComponent /> : 
       activeScreen == "List" ? <ListComponent /> : 
       activeScreen == "Add" ? <AddComponent /> : 
-      <MessagesComponent />}
+      <ProfileComponent />}
       <div className='HomeScreen_TopBar'>
         <div className='HomeScreen_TopBar_Logo'> 
           {activeScreen == "Map" ? <div>LOGO</div> : 
           activeScreen == "List" ? <div>Caches near you</div> : 
           activeScreen == "Add" ? <div>Add a cache</div> : 
-          <MessagesComponent />}
+          <div>Profile</div>}
         </div>
       </div>
       {/* <div className='HomeScreen_BottomBar'>

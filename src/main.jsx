@@ -19,12 +19,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Router>
       <Routes>
         <Route path='/' element = {<Login/>} />
+        <Route path='/login' element = {<Login/>} />
         <Route path='/signup' element = {<Signup />} />
         <Route path='/home' element = {<HomeScreen activeScreen = "Map"/>} />
         <Route path='/list' element = {<HomeScreen activeScreen = "List"/>} />
         <Route path='/addCache' element = {<HomeScreen activeScreen = "Add"/>} />
         <Route path='/messages' element = {<HomeScreen activeScreen = "List"/>} />
-        <Route path='/profile' element = {<HomeScreen activeScreen = "List"/>} />
+        <Route path='/profile' element = {<HomeScreen activeScreen = "Profile"/>} />
       </Routes>
     </Router>
   </>,

@@ -78,7 +78,7 @@ function Signup() {
                     <button type="submit" className="btn btn-success w-100 rounded-0">
                         Sign up
                     </button>
-                    <Link to="/Login" className="btn btn-default border w-100 bg-light rounded-0">
+                    <Link to="/login" className="btn btn-default border w-100 bg-light rounded-0">
                         Log In
                     </Link>
                 </form>

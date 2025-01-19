@@ -60,6 +60,7 @@ navigator.geolocation.getCurrentPosition((position) => {
   userPos["lng"] = position.coords.longitude
 });
 
+
 userPos = {lat: 49.2625931, lng: -123.2448568}
 
 type Poi = { key: object, location: google.maps.LatLngLiteral }
@@ -69,6 +70,7 @@ const cacheLocations: Poi[] = [
   {key: {user: "Chaitanya", cacheName: "Chaitanya Cache", desc: "Chaitanya's Cache"}, location: { lat: 49.2616, lng: -123.2460 }},
   {key: {user: "Soham", cacheName: "Soham Cache", desc: "Soham's Cache"}, location: { lat: 49.2616, lng: -123.2470 }},
   {key: {user: "Sidd", cacheName: "Sidd Cache", desc: "Sidd's Cache"}, location: { lat: 49.2596, lng: -123.2480 }},
+  {key: {user: "You"}, location: {lat: 49.2625931, lng: -123.2448568}}
 ];
 
 const PoiMarkers = (props: {pois: Poi[]}) => {
@@ -139,18 +141,20 @@ const PoiMarkers = (props: {pois: Poi[]}) => {
             handleClick(poi.location, poi.key)
           }}
           >
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Pan_Green_Circle.png" width={20} height={20} ></img>
+            {poi.key["user"] == "You" ? <img src='https://bluedothub.org/wp-content/uploads/2022/04/icon-other.png' width={20} height={20}></img> : <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Pan_Green_Circle.png" width={20} height={20} ></img>}
             {/* <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} /> */}
         </AdvancedMarker>
-        
       ))}
       {currCache != "none" ? 
       <div className='MapComponent_CacheDesc'>
         <div className='MapComponent_CacheDesc_LeftWrapper'>
-          <div className='MapComponent_CacheDesc_CacheName'>{currCache}</div>
-          <div className='MapComponent_CacheDesc_CacheUser'>{currUser}</div>
-          <div className='MapComponent_CacheDesc_CacheDesc'>{currDesc}</div>
-          {calculateDistance(userPos, currPos) < 0.150 ? "Open audio" : "Move closer to interact"}
+          <div className='MapComponent_CacheDesc_CacheName'>{currUser}</div>
+          {currUser != "You" ? 
+          <div>
+            <div className='MapComponent_CacheDesc_CacheUser'>{currUser}</div>
+            <div className='MapComponent_CacheDesc_CacheDesc'>{currDesc}</div>
+            {calculateDistance(userPos, currPos) < 0.150 ? "Open audio" : "Move closer to interact"}
+          </div> : ""}
         </div>
         <button className='MapComponent_CacheDesc_Close' onClick={() => {
           setCurrCache("none")
@@ -185,3 +189,4 @@ function MapComponent() {
 }
 
 export default MapComponent
+        

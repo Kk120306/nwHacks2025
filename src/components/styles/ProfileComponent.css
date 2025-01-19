@@ -1,0 +1,14 @@
+.ProfileComponent {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ProfileComponent_Pic {
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+}
