@@ -1,6 +1,6 @@
 import React from 'react'
 
-function HomeScreen() {
+function ListScreen() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function HomeScreen() {
   )
 }
 
-export default HomeScreen
+export default ListScreen
