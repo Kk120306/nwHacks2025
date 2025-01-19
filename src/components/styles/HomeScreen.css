@@ -5,6 +5,11 @@
     flex-direction: column;
 }
 
+.HomeScreen button {
+    border: none;
+    background: none;
+}
+
 .HomeScreen_TopBar_Logo {
     position: absolute;
     top: 1rem;

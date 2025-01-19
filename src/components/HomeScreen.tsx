@@ -13,7 +13,12 @@ function HomeScreen({activeScreen}) {
       activeScreen == "Add" ? <AddComponent /> : 
       <MessagesComponent />}
       <div className='HomeScreen_TopBar'>
-        <div className='HomeScreen_TopBar_Logo'>LOGO</div>
+        <div className='HomeScreen_TopBar_Logo'> 
+          {activeScreen == "Map" ? <div>LOGO</div> : 
+          activeScreen == "List" ? <div>Caches near you</div> : 
+          activeScreen == "Add" ? <div>Add a cache</div> : 
+          <MessagesComponent />}
+        </div>
       </div>
       {/* <div className='HomeScreen_BottomBar'>
         <button className='HomeScreen_BottomBar_Messages' onClick={() => {setActiveScreen("List")}} >L</button>

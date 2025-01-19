@@ -1,4 +1,14 @@
 .AddComponent {
+    margin-top: 2.5rem;
     width: 100vw;
     height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.AddComponent_Horizontal_Wrapper {
+    display: flex;
+    flex-direction: row;
 }

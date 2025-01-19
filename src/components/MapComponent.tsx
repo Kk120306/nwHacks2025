@@ -75,6 +75,7 @@ const PoiMarkers = (props: {pois: Poi[]}) => {
   const [currCache, setCurrCache] = useState("none")
   const [currUser, setCurrUser] = useState("none")
   const [currDesc, setCurrDesc] = useState("none")
+  const [currPos, setCurrPos] = useState("none")
   const map = useMap();
   const [markers, setMarkers] = useState<{[key: string]: Marker}>({});
   const clusterer = useRef<MarkerClusterer | null>(null);
@@ -117,6 +118,7 @@ const PoiMarkers = (props: {pois: Poi[]}) => {
     setCurrCache(key["cacheName"])
     setCurrUser(key["user"])
     setCurrDesc(key["desc"])
+    setCurrPos(latLng)
     console.log(key)
   }, [map])
 
@@ -148,6 +150,7 @@ const PoiMarkers = (props: {pois: Poi[]}) => {
           <div className='MapComponent_CacheDesc_CacheName'>{currCache}</div>
           <div className='MapComponent_CacheDesc_CacheUser'>{currUser}</div>
           <div className='MapComponent_CacheDesc_CacheDesc'>{currDesc}</div>
+          {calculateDistance(userPos, currPos) < 0.150 ? "Open audio" : "Move closer to interact"}
         </div>
         <button className='MapComponent_CacheDesc_Close' onClick={() => {
           setCurrCache("none")

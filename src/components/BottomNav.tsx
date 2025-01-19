@@ -5,19 +5,18 @@ function BottomNav() {
   return (
     <div className='HomeScreen_BottomBar'>
         <Link to = "/list">
-            <button className='HomeScreen_BottomBar_Home'>L</button>
+            <button className='HomeScreen_BottomBar_Home'>
+                <img src='https://cdn-icons-png.flaticon.com/512/570/570170.png' width={"20px"} height={"20px"} ></img>
+            </button>
         </Link>
         <Link to = "/home">
-            <button className='HomeScreen_BottomBar_Messages'>M</button>
+            <img src='https://cdn-icons-png.flaticon.com/512/3082/3082383.png' width={"20px"} height={"20px"}></img>
         </Link>
         <Link to = "/addCache">
-            <button className='HomeScreen_BottomBar_List'>A</button>
-        </Link>
-        <Link to = "/messages" >
-            <button className='HomeScreen_BottomBar_List'>Me</button>
+            <img src='https://img.icons8.com/m_rounded/512/plus.png' width={"22px"} height={"22px"}></img>
         </Link>
         <Link to = "/profile" >
-            <button className='HomeScreen_BottomBar_List'>P</button>
+            <img src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' width={"25px"} height={"25px"}></img>
         </Link>
     </div>
   )

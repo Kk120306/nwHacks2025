@@ -66,23 +66,27 @@ function ListComponent() {
   return (
     <div className='ListComponent' >
       <div className='ListComponent_List'>
+        <div className='ListComponent_HLine'></div>
         {sortedLocations.map(_ => (
-          <div className='ListComponent_List_Item' id={_["name"]} >
-            <div className='ListComponent_List_Item_Left_Wrapper'>
-              <div className='ListComponent_List_Item_Name'>
-                {_["name"]}
+          <>
+            <div className='ListComponent_List_Item' id={_["name"]} >
+              <div className='ListComponent_List_Item_Left_Wrapper'>
+                <div className='ListComponent_List_Item_Name'>
+                  {_["name"]}
+                </div>
+                <div className='ListComponent_List_Item_User'>
+                  {_["user"]}
+                </div>
+                <div className='ListComponent_List_Item_Desc'>
+                  {_["desc"]}
+                </div>
               </div>
-              <div className='ListComponent_List_Item_User'>
-                {_["user"]}
-              </div>
-              <div className='ListComponent_List_Item_Desc'>
-                {_["desc"]}
+              <div className='ListComponent_List_Item_Distance'>
+                {_["distance"]}
               </div>
             </div>
-            <div className='ListComponent_List_Item_Distance'>
-              {_["distance"]}
-            </div>
-          </div>
+            <div className='ListComponent_HLine'></div>
+          </>
         ))}
       </div>
       <BottomNav />

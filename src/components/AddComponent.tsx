@@ -41,19 +41,13 @@ function AddComponent() {
 
   return (
     <div className='AddComponent'>
+      <div className='AddComponent_FormWrapper'>
         <div>Name</div>
         <input className='AddComponent_Name' placeholder='Very cool cache' />
-        <div>I am dropping an item</div> 
-        <input type='checkbox' 
-               className='AddComponent_ItemYesNo' 
-               checked={droppingItem} 
-               onChange={() => setDroppingItem(!droppingItem)} />
-        {droppingItem ? <div> Hint <input className='AddComponent_Hint' /> </div> : ""}
-        <div>I am leaving a voice note</div> 
-        <input type='checkbox' 
-               className='AddComponent_ItemYesNo' 
-               checked={leavingNote} 
-               onChange={() => setLeavingNote(!leavingNote)} />
+        <div>Hint</div>
+        <input className='AddComponent_Hint' placeholder='Under the rocks' />
+        {droppingItem ? <div> <div> Hint </div>  </div> : ""}
+          <div onClick={() => setLeavingNote(!leavingNote)} className='AddComponent_VoiceMemo'> Record a voice memo </div>
         {leavingNote ? 
         <div>
              <AudioRecorder
@@ -67,13 +61,13 @@ function AddComponent() {
             <button onClick={recorderControls.stopRecording}>Stop recording</button>
             <br />
         </div> : ""}
-        Add a photo?
-        <input type='checkbox' 
-               className='AddComponent_ItemYesNo' 
-               checked={addingPhoto} 
-               onChange={() => setAddingPhoto(!addingPhoto)} />
-        {addingPhoto ? <Camera onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }/> : ""}
-        <button className='AddComponent_SubmitButton'>Add cache!</button>
+        <div onClick={() => setAddingPhoto(!addingPhoto)} className='AddComponent_Picture'>Add a picture</div>
+        {addingPhoto ? 
+        <Camera 
+          idealFacingMode = "environment"
+          onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }/> : ""}
+      </div>
+        <button className='AddComponent_SubmitButton'>Add cache</button>
         <BottomNav />
     </div>
   )
