@@ -10,6 +10,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Signup from './components/Signup.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Router>
       <Routes>
         <Route path='/' element = {<Login/>} />
+        <Route path='/signup' element = {<Signup />} />
         <Route path='/home' element = {<HomeScreen activeScreen = "Map"/>} />
         <Route path='/list' element = {<HomeScreen activeScreen = "List"/>} />
         <Route path='/addCache' element = {<HomeScreen activeScreen = "Add"/>} />

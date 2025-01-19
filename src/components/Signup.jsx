@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Validation from './SignupValidation';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./styles/Signup.css"
 
 function Signup() {
     const [values, setValues] = useState({
@@ -34,7 +35,7 @@ function Signup() {
     }
 
     return (
-        <div className="d-flex vh-100 justify-content-center align-items-center bg-primary">
+        <div className="d-flex vh-100 justify-content-center align-items-center bg-primary Signup" >
             <div className="p-3 bg-white w-25">
                 <h2>Sign-Up</h2>
                 <form onSubmit={handleSubmit}>
