@@ -18,6 +18,8 @@
 }
 
 .HomeScreen_BottomBar {
+    position: absolute;
+    bottom: 2vh;
     width: 100vw;
     display: flex;
     flex-direction: row;

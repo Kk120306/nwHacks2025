@@ -3,6 +3,55 @@ import {APIProvider, Map, MapCameraChangedEvent, AdvancedMarker, Pin, useMap} fr
 import {MarkerClusterer} from '@googlemaps/markerclusterer';
 import type {Marker} from '@googlemaps/markerclusterer';
 import "./styles/MapComponent.css"
+import BottomNav from './BottomNav';
+import {initializeApp} from 'firebase/app'
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBONTlf49yDHmH85iLlIkN6MpGp-jQTt8g",
+  authDomain: "cache-d4730.firebaseapp.com",
+  projectId: "cache-d4730",
+  storageBucket: "cache-d4730.firebasestorage.app",
+  messagingSenderId: "738524778233",
+  appId: "1:738524778233:web:26ba5908d3d1c1b9549c28",
+  measurementId: "G-7FHSJ8QVTL"
+};
+
+function calculateDistance(pos1, pos2) {
+    const toRadians = (deg) => (deg * Math.PI) / 180;
+
+    const R = 6371; // Earth's radius in kilometers
+    const lat1 = toRadians(pos1.lat);
+    const lat2 = toRadians(pos2.lat);
+    const deltaLat = toRadians(pos2.lat - pos1.lat);
+    const deltaLng = toRadians(pos2.lng - pos1.lng);
+
+    const a =
+        Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+        Math.cos(lat1) * Math.cos(lat2) *
+        Math.sin(deltaLng / 2) * Math.sin(deltaLng / 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return R * c; // Distance in kilometers
+}
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function getCaches(db) {
+  const cachesCol = collection(db, 'caches');
+  const cacheSnapshot = await getDocs(cachesCol);
+  const cacheList = cacheSnapshot.docs.map(doc => doc.data());
+  console.log(cacheList);
+}
+
+getCaches(db)
+
+const marker = document.createElement("img");
+
+marker.src =
+  "https://upload.wikimedia.org/wikipedia/commons/1/11/Pan_Green_Circle.png";
 
 let userPos = new Object()
 
@@ -10,6 +59,8 @@ navigator.geolocation.getCurrentPosition((position) => {
   userPos["lat"] = position.coords.latitude
   userPos["lng"] = position.coords.longitude
 });
+
+userPos = {lat: 49.2625931, lng: -123.2448568}
 
 type Poi = { key: object, location: google.maps.LatLngLiteral }
 
@@ -62,10 +113,16 @@ const PoiMarkers = (props: {pois: Poi[]}) => {
     if(!latLng) return;
     console.log('marker clicked:', latLng.toString());
     map.panTo(latLng);
+    map.setZoom(20)
     setCurrCache(key["cacheName"])
     setCurrUser(key["user"])
     setCurrDesc(key["desc"])
     console.log(key)
+  }, [map])
+
+  const zoomOut = useCallback(() => {
+    if (!map) return;
+    map.setZoom(15)
   }, [map])
 
   return (
@@ -80,16 +137,25 @@ const PoiMarkers = (props: {pois: Poi[]}) => {
             handleClick(poi.location, poi.key)
           }}
           >
-            <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Pan_Green_Circle.png" width={20} height={20} ></img>
+            {/* <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} /> */}
         </AdvancedMarker>
         
       ))}
       {currCache != "none" ? 
       <div className='MapComponent_CacheDesc'>
-        {currCache}
-        {currUser}
-        {currDesc}
-      </div> : ""}
+        <div className='MapComponent_CacheDesc_LeftWrapper'>
+          <div className='MapComponent_CacheDesc_CacheName'>{currCache}</div>
+          <div className='MapComponent_CacheDesc_CacheUser'>{currUser}</div>
+          <div className='MapComponent_CacheDesc_CacheDesc'>{currDesc}</div>
+        </div>
+        <button className='MapComponent_CacheDesc_Close' onClick={() => {
+          setCurrCache("none")
+          zoomOut()
+        }}>X</button>
+      </div> : 
+      <BottomNav />
+      }
     </>
   );
 };
@@ -101,7 +167,7 @@ function MapComponent() {
         <Map
             defaultZoom={15}
             // defaultCenter={ { lat: userPos["lat"], lng: userPos["lng"] } }
-            defaultCenter={ { lat: 49.2625931, lng: -123.2448568 } }
+            defaultCenter={ { lat: userPos["lat"], lng: userPos["lng"] } }
             mapId={"57c4a73f6befac68 "}
             mapTypeControl = {false}
             streetViewControl = {false}
