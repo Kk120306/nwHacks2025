@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/ProfileScreen.css";
 
 class Person {
   constructor(name, image) {
@@ -14,15 +15,15 @@ function ProfileScreen() {
     console.log("logout");
   };
 
-  let handleMode = () => {
-    if (darkMode) {
-      console.log("Light Mode is Now On");
-      darkMode = 0;
-    } else {
-      console.log("Dark Mode is Now On");
-      darkMode = 1;
-    }
-  };
+  // let handleMode = () => {
+  //   if (darkMode) {
+  //     console.log("Light Mode is Now On");
+  //     darkMode = 0;
+  //   } else {
+  //     console.log("Dark Mode is Now On");
+  //     darkMode = 1;
+  //   }
+  // };
 
   let arr = [
     new Person("Friend 1", "https://via.placeholder.com/500x300"),
@@ -63,7 +64,7 @@ function ProfileScreen() {
         </div>
       </div>
 
-      <div className="Dark Mode Toggle">
+      <div className="Log Out">
         <button
           className="ProfileScreen_Button LogOut"
           onClick={() => handleLogout()}
@@ -72,17 +73,17 @@ function ProfileScreen() {
         </button>
       </div>
 
-      <div className="Log Out">
+      {/* <div className="Dark Mode Toggle">
         <button
-          className="ProfileScreen_Button LogOut"
+          className="ProfileScreen_Button DarkMode"
           onClick={() => handleMode()}
         >
           DarkMode
         </button>
-      </div>
+      </div> */}
 
       <footer>
-        <p>&copy; 2025 Vertical Feed. All rights reserved.</p>
+        <p>&copy; 2025 GeoCaching. No rights reserved.</p>
       </footer>
     </div>
   );
