@@ -1,6 +1,10 @@
 import React from 'react';
 
 function ProfileScreen() {
+  let handleLogout = () => {
+    console.log("logout")
+  }
+
   return (
     <div>
       <header>
@@ -17,9 +21,21 @@ function ProfileScreen() {
         </div>        
       </div>
 
-      <div className=''>
-
+      <div className="Friends">
+        <div className="List of friends">
+          
+        </div>
       </div>
+
+      <div className="Dark Mode Toggle">
+      </div>
+
+      <div className="Log Out">
+        <button className='SplashScreen_Button SplashScreen_Buttons_Login' onClick={() => handleLogout()} > 
+          LOGOUT 
+        </button>
+      </div>
+      
 
       <footer>
         <p>&copy; 2025 Vertical Feed. All rights reserved.</p>
