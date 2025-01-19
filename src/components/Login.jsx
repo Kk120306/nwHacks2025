@@ -3,37 +3,50 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from './LoginValidation';
-import "./styles/Login.css"
+import "./styles/Login.css";
 
 function Login() {
     const [values, setValues] = useState({
         email: '',
         password: ''
-    })
+    });
 
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     const handleInput = (event) => {
         setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
-    }
+    };
 
-    function handleSubmit(event) {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        setErrors(Validation(values));
-        if (errors.email === "" && errors.password === "") {
-            axios.post('http://localhost:8081/login', values)
-                .then(res => {
-                    if (res.data === "Success") {
-                        navigate('/home');
-                    } else {
-                        alert("No record existed")
-                    }
-                })
-                .catch(err => console.log(err));
+
+        // Validate inputs
+        const validationErrors = Validation(values);
+
+        // Ensure validationErrors is an object
+        if (typeof validationErrors !== 'object') {
+            console.error('Validation function did not return an object.');
+            return;
         }
 
-    }
+        setErrors(validationErrors);
+
+        // Only proceed if there are no errors
+        if (Object.keys(validationErrors).length === 0) {
+            try {
+                const res = await axios.post('http://localhost:8081/login', values);
+                if (res.data === "Success") {
+                    navigate('/home');
+                } else {
+                    alert("No record existed");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("An error occurred during login.");
+            }
+        }
+    };
 
     return (
         <div className="d-flex vh-100 justify-content-center align-items-center bg-primary Login">
