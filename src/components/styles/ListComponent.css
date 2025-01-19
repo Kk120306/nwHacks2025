@@ -2,6 +2,22 @@
     margin-top: 2.5rem;
     width: 100vw;
     height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.ListComponent_Header {
+    width: 80vw;
+    padding: 1rem;
+    background-color: #3a3a3a;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    font-weight: bold;
 }
 
 .ListComponent_List {
@@ -9,7 +25,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 5vh;
+    padding-top: 1vh;
+    width: 100%;
 }
 
 .ListComponent_List_Item {
@@ -18,6 +35,29 @@
     padding: 0.75rem;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ListComponent_List_Item_Left_Wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ListComponent_List_Item_Left_Wrapper img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.ListComponent_List_Item_Left_Wrapper .name {
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .ListComponent_HLine {
@@ -26,7 +66,28 @@
     background-color: black;
 }
 
-.ListComponent_List_Item_Left_Wrapper {
-    display: flex;
-    flex-direction: column;
+.ListComponent_List_Item_Right_Wrapper {
+    font-size: 1rem;
+    color: #555;
 }
+/* Footer styling */
+.ListComponent_Footer {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #f4f4f4;
+    font-size: 0.9rem;
+    color: #333;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .ListComponent_Footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .ListComponent_Footer a:hover {
+    text-decoration: underline;
+  }
+  
