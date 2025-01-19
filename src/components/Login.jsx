@@ -1,7 +1,7 @@
 import React, { useState } from 'react'; // Import useState
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Validation from './LoginValidation'
 
 function Login() {
@@ -9,6 +9,8 @@ function Login() {
         email: '',
         password: ''
     })
+
+    const navigate = useNavigate();
 
     const handleInput = (event) => {
         setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
@@ -19,9 +21,17 @@ function Login() {
     function handleSubmit(event) {
         event.preventDefault();
         setErrors(Validation(values));
-        axios.post('http://localhost:8081/login', { email, password })
-            .then(res => console.log(res))
+        if (errors.email === "" && errors.password === ""){
+            axios.post('http://localhost:8081/login', values)
+            .then(res => {
+                if(res.data === "Success"){
+                    navigate('/home');
+                }else {
+                    alert("No record existed");
+                }
+        })
             .catch(err => console.log(err));
+        }
     }
 
     return (
@@ -37,6 +47,7 @@ function Login() {
                             className='form-control'
                             onChange={handleInput}
                         />
+                        {errors.email && <span className='text-danger'> {errors.email}</span>}
                     </div>
                     <div className='mb-3'>
                         <label htmlFor="password">Password</label>
@@ -47,6 +58,7 @@ function Login() {
                             className='form-control'
                             onChange={handleInput}
                         />
+                        {errors.password && <span className='text-danger'> {errors.password}</span>}
                     </div>
                     <button type='submit' className='btn btn-success w-100 rounded-0'>Login</button>
                     <link to="/signup" className='btn btn-default border w-100 bg-light rounded-0'>Create Account</link>
