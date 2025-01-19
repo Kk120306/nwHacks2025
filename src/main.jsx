@@ -13,8 +13,8 @@ import {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
-      {/* <SplashScreen /> */}
-      {/* <Login /> */}
+      {/* <SplashScreen /> /}
+      {/ <Login /> */}
     <Router>
       <Routes>
         <Route path='/' element = {<HomeScreen activeScreen = "Map"/>} />
