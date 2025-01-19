@@ -12,12 +12,13 @@ const db = mysql.createConnection({
     database: "crud"
 })
 app.post('/login', (req, res) => {
-    const sql = "SELECT * FROM login WHERE username = ? AND password = ?";
+    const sql = "SELECT * FROM login WHERE (username = ? OR name = ?) AND password = ?";
     const values = [
-        req.body.email,
+        req.body.name,
+        req.body.username,
         req.body.password
     ]
-    db.query(mysql, [values], (err, data) => {
+    db.query(sql, [values], (err, data) => {
         if (err) return res.json("Login Failed");
         return res.json(data);
     })
