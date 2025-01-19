@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       {/ <Login /> */}
     <Router>
       <Routes>
-        <Route path='/' element = {<HomeScreen activeScreen = "Map"/>} />
+        <Route path='/' element = {<Login/>} />
         <Route path='/home' element = {<HomeScreen activeScreen = "Map"/>} />
         <Route path='/list' element = {<HomeScreen activeScreen = "List"/>} />
         <Route path='/addCache' element = {<HomeScreen activeScreen = "Add"/>} />
