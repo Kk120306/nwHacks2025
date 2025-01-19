@@ -1,42 +1,24 @@
-import React from 'react'
-import {APIProvider, Map, MapCameraChangedEvent, AdvancedMarker, Pin} from '@vis.gl/react-google-maps';
+import React, { useState } from 'react'
 import "./styles/HomeScreen.css"
-
-  type Poi ={ key: string, location: google.maps.LatLngLiteral }
-
-  const locations: Poi[] = [
-  {key: 'c1', location: { lat: 49.2606, lng: -123.2460 }},
-  {key: 'c2', location: { lat: 49.2506, lng: -123.2560 }},
-  {key: 'c3', location: { lat: 49.2406, lng: -123.2660 }},
-];
-
-const PoiMarkers = (props: {pois: Poi[]}) => {
-  return (
-    <>
-      {props.pois.map( (poi: Poi) => (
-        <AdvancedMarker
-          key={poi.key}
-          position={poi.location}>
-        <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} />
-        </AdvancedMarker>
-      ))}
-    </>
-  );
-};
+import MapComponent from './MapComponent';
+import ListComponent from '../ListComponent';
+import MessagesComponent from './MessagesComponent';
 
 function HomeScreen() {
+  const [activeScreen, setActiveScreen] = useState("Map")
+
   return (
     <div className='HomeScreen' >
-    <APIProvider apiKey={'AIzaSyDQ5luUuZcCXzct_Wcv8QI_dsTmANvKxu4'} onLoad={() => console.log('Maps API has loaded.')}>
-   <Map
-      defaultZoom={15}
-      defaultCenter={ { lat: 49.2606, lng: -123.2460 } }
-      mapId={"57c4a73f6befac68 "}
-      onCameraChanged={ (ev: MapCameraChangedEvent) =>
-        console.log('camera changed:', ev.detail.center, 'zoom:', ev.detail.zoom)}>
-   </Map>
-   <PoiMarkers pois={locations} />
-    </APIProvider>
+      {activeScreen == "Map" ? <MapComponent /> : activeScreen == "List" ? <ListComponent /> : <MessagesComponent />}
+      <div className='HomeScreen_TopBar'>
+        <div className='HomeScreen_TopBar_Logo'>LOGO</div>
+        <button className='HomeScreen_TopBar_Profile'>PROFILE</button>
+      </div>
+      <div className='HomeScreen_BottomBar'>
+        <button className='HomeScreen_BottomBar_Messages' onClick={() => {setActiveScreen("List")}} >L</button>
+        <button className='HomeScreen_BottomBar_Home' onClick={() => {setActiveScreen("Map")}}>M</button>
+        <button className='HomeScreen_BottomBar_List'>M</button>
+      </div>
     </div>
   )
 }
