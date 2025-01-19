@@ -1,24 +1,25 @@
 import React, { useState } from 'react'
 import "./styles/HomeScreen.css"
 import MapComponent from './MapComponent';
-import ListComponent from '../ListComponent';
+import ListComponent from './ListComponent';
 import MessagesComponent from './MessagesComponent';
+import AddComponent from './AddComponent';
 
-function HomeScreen() {
-  const [activeScreen, setActiveScreen] = useState("Map")
-
+function HomeScreen({activeScreen}) {
   return (
     <div className='HomeScreen' >
-      {activeScreen == "Map" ? <MapComponent /> : activeScreen == "List" ? <ListComponent /> : <MessagesComponent />}
+      {activeScreen == "Map" ? <MapComponent /> : 
+      activeScreen == "List" ? <ListComponent /> : 
+      activeScreen == "Add" ? <AddComponent /> : 
+      <MessagesComponent />}
       <div className='HomeScreen_TopBar'>
         <div className='HomeScreen_TopBar_Logo'>LOGO</div>
-        <button className='HomeScreen_TopBar_Profile'>PROFILE</button>
       </div>
-      <div className='HomeScreen_BottomBar'>
+      {/* <div className='HomeScreen_BottomBar'>
         <button className='HomeScreen_BottomBar_Messages' onClick={() => {setActiveScreen("List")}} >L</button>
         <button className='HomeScreen_BottomBar_Home' onClick={() => {setActiveScreen("Map")}}>M</button>
-        <button className='HomeScreen_BottomBar_List'>M</button>
-      </div>
+        <button className='HomeScreen_BottomBar_List'>Me</button>
+      </div> */}
     </div>
   )
 }

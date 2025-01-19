@@ -2,3 +2,31 @@
     width: 100vw;
     height: 80vh;
 }
+
+.MapComponent_CacheDesc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.MapComponent_CacheDesc_LeftWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.MapComponent_CacheDesc_CacheName {
+    font-size: 30px;
+}
+
+.MapComponent_CacheDesc_CacheUser {
+    font-size: 25px;
+}
+
+.MapComponent_CacheDesc_CacheDesc {
+    font-size: 20px;
+}
+
+.MapComponent_CacheDesc_Close {
+    width: 40px;
+    height: 40px;
+}

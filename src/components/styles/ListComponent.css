@@ -1,0 +1,20 @@
+.ListComponent {
+    width: 100vw;
+    height: 80vh;
+}
+
+.ListComponent_List {
+    padding-top: 5vh;
+}
+
+.ListComponent_List_Item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 1px solid black;
+}
+
+.ListComponent_List_Item_Left_Wrapper {
+    display: flex;
+    flex-direction: column;
+}
